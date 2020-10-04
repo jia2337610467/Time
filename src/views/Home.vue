@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref, onMounted,toRefs } from "vue";
+import { reactive, onMounted,toRefs } from "vue";
 export default {
   name: "home",
   setup() {
     const data = reactive({
       newtime: new Date(),
-      timsmm: (time: any) => {
+      timsmm: () => {
         return data.newtime.getMinutes() < 10
           ? "0" + data.newtime.getMinutes()
           : data.newtime.getMinutes();
