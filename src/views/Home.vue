@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="year">
+      <span>{{ newtime.getFullYear() }}年</span>
       <span>{{ newtime.getMonth() + 1 }}月 </span>
       <span>{{ newtime.getDate() }}日</span>
     </div>
@@ -51,7 +52,17 @@ export default {
   .year {
     flex: 1;
     display: flex;
-    font-size: 190px;
+    align-items: center;
+    font-size: 150px;
+    span:nth-of-type(1){
+      color: rgb(207, 78, 78);
+    }
+    span:nth-of-type(2){
+      color: #9DC8AD;
+    }
+    span:nth-of-type(3){
+      color: #9DC8AD;
+    }
   }
   .time {
     flex: 1;
