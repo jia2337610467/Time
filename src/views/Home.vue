@@ -3,7 +3,8 @@
     <div class="year">
       <span>{{ newtime.getFullYear() }}年</span>
       <span>{{ newtime.getMonth() + 1 }}月 </span>
-      <span>{{ newtime.getDate() }}日</span>
+      <span>{{ newtime.getDate() }}日 </span>
+      <span>{{ week() }}</span>
     </div>
     <div class="time">
       <span>{{ newtime.getHours() + ":" + timsmm() }}</span>
@@ -23,6 +24,17 @@ export default {
           ? "0" + data.newtime.getMinutes()
           : data.newtime.getMinutes();
       },
+      week:()=>{
+        switch(data.newtime.getDay()){
+          case 0: return '星期日'
+          case 1: return '星期一'
+          case 2: return '星期二'
+          case 3: return '星期三'
+          case 4: return '星期四'
+          case 5: return '星期五'
+          case 6: return '星期六'
+        }
+      }
     });
 
     onMounted(() => {
@@ -42,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #272931;
   display: flex;
   flex-direction: column;
@@ -52,8 +64,10 @@ export default {
   .year {
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    font-size: 150px;
+    justify-content: center;
+    font-size: 0.3rem;
     span:nth-of-type(1){
       color: rgb(207, 78, 78);
     }
@@ -61,16 +75,25 @@ export default {
       color: #9DC8AD;
     }
     span:nth-of-type(3){
-      color: #9DC8AD;
+      color: #1b9bd6;
+    }
+    span:nth-of-type(4){
+      font-size: 65%;
     }
   }
   .time {
     flex: 1;
     display: flex;
-    font-size: 420px;
+    align-items: center;
+    font-size: 1rem;
   }
   span {
     color: #ffffff;
+  }
+}
+@media screen and (max-width: 415px) {
+  .year{
+    font-size: 0.8rem!important;
   }
 }
 </style>
